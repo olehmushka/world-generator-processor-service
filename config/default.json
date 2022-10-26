@@ -1,0 +1,22 @@
+{
+  "httpServer": {
+    "address": ":8000",
+    "basePath": "api",
+    "readTimeoutInSec": 300,
+    "readHeaderTimeoutInSec": 300,
+    "writeTimeoutInSec": 300,
+    "idleTimeoutInSec": 300
+  },
+  "mongoDb": {
+    "url": "mongodb://localhost:27017",
+    "dbName": "world_generator_db",
+    "username": "root",
+    "password": "rootPassword",
+    "maxBulkItemsSize": 500
+  },
+  "redis": {
+    "url": "redis://localhost:6379",
+    "username": "",
+    "password": ""
+  }
+}

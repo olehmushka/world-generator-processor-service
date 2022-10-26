@@ -1,0 +1,86 @@
+basePath: /api/
+definitions:
+  http.DependenciesResponse:
+    properties:
+      mongodb:
+        type: string
+    type: object
+  http.GetHealthCheckResponse:
+    properties:
+      status:
+        type: string
+    type: object
+  http.GetInfoResponse:
+    properties:
+      dependencies:
+        $ref: '#/definitions/http.DependenciesResponse'
+    type: object
+  httperror.ErrorResp:
+    properties:
+      error:
+        additionalProperties: true
+        type: object
+      error_code:
+        type: string
+      error_message:
+        type: string
+      trace_id:
+        type: string
+    type: object
+info:
+  contact:
+    email: olegamysk@gmail.com
+    name: Oleh Mushka
+  description: Swagger API for WorldGenerator Processor.
+  title: WorldGenerator Processor API
+  version: "1.0"
+paths:
+  /health-check:
+    get:
+      consumes:
+      - application/json
+      description: Health check end-point
+      parameters:
+      - description: Custom trace id
+        in: header
+        name: x-trace-id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/http.GetHealthCheckResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/httperror.ErrorResp'
+      summary: Health check end-point
+      tags:
+      - System
+  /info:
+    get:
+      consumes:
+      - application/json
+      description: Get info about app end-point
+      parameters:
+      - description: Custom trace id
+        in: header
+        name: X-Trace-ID
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/http.GetInfoResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/httperror.ErrorResp'
+      summary: Get info about app end-point
+      tags:
+      - System
+swagger: "2.0"

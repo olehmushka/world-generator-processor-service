@@ -1,0 +1,133 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Swagger API for WorldGenerator Processor.",
+        "title": "WorldGenerator Processor API",
+        "contact": {
+            "name": "Oleh Mushka",
+            "email": "olegamysk@gmail.com"
+        },
+        "version": "1.0"
+    },
+    "basePath": "/api/",
+    "paths": {
+        "/health-check": {
+            "get": {
+                "description": "Health check end-point",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "System"
+                ],
+                "summary": "Health check end-point",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Custom trace id",
+                        "name": "x-trace-id",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/http.GetHealthCheckResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/httperror.ErrorResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/info": {
+            "get": {
+                "description": "Get info about app end-point",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "System"
+                ],
+                "summary": "Get info about app end-point",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Custom trace id",
+                        "name": "X-Trace-ID",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/http.GetInfoResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/httperror.ErrorResp"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "http.DependenciesResponse": {
+            "type": "object",
+            "properties": {
+                "mongodb": {
+                    "type": "string"
+                }
+            }
+        },
+        "http.GetHealthCheckResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "http.GetInfoResponse": {
+            "type": "object",
+            "properties": {
+                "dependencies": {
+                    "$ref": "#/definitions/http.DependenciesResponse"
+                }
+            }
+        },
+        "httperror.ErrorResp": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "error_code": {
+                    "type": "string"
+                },
+                "error_message": {
+                    "type": "string"
+                },
+                "trace_id": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
