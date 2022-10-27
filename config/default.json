@@ -1,6 +1,6 @@
 {
   "httpServer": {
-    "address": ":8000",
+    "address": ":8080",
     "basePath": "api",
     "readTimeoutInSec": 300,
     "readHeaderTimeoutInSec": 300,

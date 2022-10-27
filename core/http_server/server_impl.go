@@ -21,24 +21,24 @@ import (
 type server struct {
 	handlers Handlers
 
-	address                string
-	basePath               string
-	readTimeoutInSec       int
-	readHeaderTimeoutInSec int
-	writeTimeoutInSec      int
-	idleTimeoutInSec       int
+	address           string
+	basePath          string
+	readTimeout       time.Duration
+	readHeaderTimeout time.Duration
+	writeTimeout      time.Duration
+	idleTimeout       time.Duration
 }
 
 func New(cfg *config.Config, handlers Handlers) Server {
 	return &server{
 		handlers: handlers,
 
-		address:                cfg.HTTPServer.Address,
-		basePath:               cfg.HTTPServer.BasePath,
-		readTimeoutInSec:       cfg.HTTPServer.ReadTimeoutInSec,
-		readHeaderTimeoutInSec: cfg.HTTPServer.ReadHeaderTimeoutInSec,
-		writeTimeoutInSec:      cfg.HTTPServer.WriteTimeoutInSec,
-		idleTimeoutInSec:       cfg.HTTPServer.IdleTimeoutInSec,
+		address:           cfg.HTTPServer.Address,
+		basePath:          cfg.HTTPServer.BasePath,
+		readTimeout:       time.Duration(cfg.HTTPServer.ReadTimeoutInSec) * time.Second,
+		readHeaderTimeout: time.Duration(cfg.HTTPServer.ReadHeaderTimeoutInSec) * time.Second,
+		writeTimeout:      time.Duration(cfg.HTTPServer.WriteTimeoutInSec) * time.Second,
+		idleTimeout:       time.Duration(cfg.HTTPServer.IdleTimeoutInSec) * time.Second,
 	}
 }
 
@@ -75,20 +75,23 @@ func (s *server) Register() {
 	srv := &http.Server{
 		Addr:              s.address,
 		Handler:           router,
-		ReadTimeout:       time.Duration(s.readTimeoutInSec),
-		ReadHeaderTimeout: time.Duration(s.readHeaderTimeoutInSec),
-		WriteTimeout:      time.Duration(s.writeTimeoutInSec),
-		IdleTimeout:       time.Duration(s.idleTimeoutInSec),
+		ReadTimeout:       s.readTimeout,
+		ReadHeaderTimeout: s.readHeaderTimeout,
+		WriteTimeout:      s.writeTimeout,
+		IdleTimeout:       s.idleTimeout,
 	}
 
-	logrus.WithFields(logrus.Fields{"http_server_address": s.address}).
-		Info("starting http server...")
+	log := logrus.WithFields(logrus.Fields{"http_server_address": s.address})
+	log.Info("starting http server...")
 	if err := srv.ListenAndServe(); err != nil {
-		logrus.
-			Error("can not start http server", err.Error())
+		log.Error("can not start http server", err.Error())
 	}
 }
 
 func (s *server) getPath(routeName string) string {
-	return fmt.Sprintf("/%s/%s", s.basePath, routeName)
+	var basePath string
+	if s.basePath != "" {
+		basePath = "/" + s.basePath
+	}
+	return fmt.Sprintf("%s/%s", basePath, routeName)
 }
