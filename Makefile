@@ -34,5 +34,11 @@ tidy:
 lint:
 	golangci-lint run --timeout 60m
 
-swag-init:
+swag_init:
 	swag init --parseDependency --parseInternal -d $(BASE_PATH) -g $(MAIN_GO_PATH)
+
+migrate_up:
+	go run main.go migrate_up
+
+migrate_down:
+	go run main.go migrate_down

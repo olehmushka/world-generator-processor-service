@@ -1,0 +1,8 @@
+BEGIN;
+
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS lang_families;
+DROP TABLE IF EXISTS lang_subfamilies;
+DROP TABLE IF EXISTS lang_languages;
+
+COMMIT;

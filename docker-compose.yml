@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  pg-mongo:
+    image: mongo
+    container_name: pg-mongo
+    volumes:
+      - ./_local-dbs/_mongo:/data/db:rw
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootPassword
+
+  pg-postgres:
+    image: postgres
+    container_name: pg-postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: rootpassword
+      POSTGRES_USER: rootuser
+      POSTGRES_MULTIPLE_DATABASES: worlder_db
+    volumes:
+      - ./_local-dbs/postgres/:/var/lib/postgresql/data
+      - ./pg-init-scripts:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+

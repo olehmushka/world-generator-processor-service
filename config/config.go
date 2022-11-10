@@ -9,6 +9,7 @@ import (
 type Config struct {
 	HTTPServer HTTPServer
 	MongoDB    MongoDB
+	Postgres   Postgres
 	Redis      Redis
 }
 

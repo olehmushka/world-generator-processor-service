@@ -14,6 +14,30 @@
     "password": "rootPassword",
     "maxBulkItemsSize": 500
   },
+  "postgres": {
+    "client": {
+      "username": "",
+      "password": "",
+      "dbName": "postgres",
+      "host": "localhost",
+      "port": 5432
+    },
+    "readerClient": {
+      "username": "",
+      "password": "",
+      "dbName": "postgres",
+      "host": "localhost",
+      "port": 5432
+    },
+    "writerCLient": {
+      "username": "",
+      "password": "",
+      "dbName": "postgres",
+      "host": "localhost",
+      "port": 5432
+    },
+    "batchItemMaxSize": 100
+  },
   "redis": {
     "url": "redis://localhost:6379",
     "username": "",
