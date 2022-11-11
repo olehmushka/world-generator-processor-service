@@ -14,3 +14,5 @@ type GenderAcceptance struct {
 	CreatedAt     time.Time `json:"created_at"`
 	ModifiedAt    time.Time `json:"modified_at"`
 }
+
+var ZeroGenderAcceptance = GenderAcceptance{}

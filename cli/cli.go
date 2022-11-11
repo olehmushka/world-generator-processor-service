@@ -22,6 +22,10 @@ func Execute(args []string) error {
 		if err := runHTTPServerCommand(); err != nil {
 			return err
 		}
+	case SyncDataCommand:
+		if err := runSyncDataCommand(); err != nil {
+			return err
+		}
 	default:
 		return fmt.Errorf("cli.Execute: not found command = %s", args[0])
 	}

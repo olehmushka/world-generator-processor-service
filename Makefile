@@ -42,3 +42,6 @@ migrate_up:
 
 migrate_down:
 	go run main.go migrate_down
+
+sync_data:
+	go run main.go sync_data

@@ -10,10 +10,10 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/jinzhu/configor v1.2.1
 	github.com/joho/godotenv v1.4.0
-	github.com/olehmushka/golang-toolkit v0.1.2
-	github.com/olehmushka/postgres-golang v0.1.0
-	github.com/olehmushka/word-generator v0.1.1
-	github.com/olehmushka/world-generator-engine v0.2.12
+	github.com/olehmushka/golang-toolkit v0.2.4
+	github.com/olehmushka/postgres-golang v0.1.2
+	github.com/olehmushka/word-generator v0.1.2
+	github.com/olehmushka/world-generator-engine v0.2.13
 	github.com/sirupsen/logrus v1.9.0
 	github.com/swaggo/http-swagger v1.3.3
 	github.com/swaggo/swag v1.8.7
@@ -46,6 +46,7 @@ require (
 	github.com/klauspost/compress v1.15.12 // indirect
 	github.com/lib/pq v1.10.2 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
+	github.com/matoous/go-nanoid v1.5.0 // indirect
 	github.com/montanaflynn/stats v0.6.6 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/swaggo/files v0.0.0-20220728132757-551d4a08d97a // indirect
@@ -58,7 +59,7 @@ require (
 	go.uber.org/multierr v1.8.0 // indirect
 	go.uber.org/zap v1.23.0 // indirect
 	golang.org/x/crypto v0.2.0 // indirect
-	golang.org/x/exp v0.0.0-20221026153819-32f3d567a233 // indirect
+	golang.org/x/exp v0.0.0-20221111094246-ab4555d3164f // indirect
 	golang.org/x/net v0.2.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
 	golang.org/x/sys v0.2.0 // indirect

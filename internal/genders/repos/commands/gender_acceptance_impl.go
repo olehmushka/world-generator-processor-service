@@ -29,6 +29,10 @@ func (r *genderAcceptanceRepo) Create(ctx context.Context, g entities.GenderAcce
 	return r.create(ctx, r.client, g)
 }
 
+func (r *genderAcceptanceRepo) CreateTx(ctx context.Context, client postgres.Writer, g entities.GenderAcceptance) error {
+	return r.create(ctx, client, g)
+}
+
 func (r *genderAcceptanceRepo) create(ctx context.Context, client postgres.Writer, g entities.GenderAcceptance) error {
 	fieldsNames := []string{"name", "origin"}
 	args := []any{g.Name, g.Origin}

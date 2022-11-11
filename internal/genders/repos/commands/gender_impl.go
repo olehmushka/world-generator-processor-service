@@ -29,6 +29,10 @@ func (r *genderRepo) Create(ctx context.Context, g entities.Gender) error {
 	return r.create(ctx, r.client, g)
 }
 
+func (r *genderRepo) CreateTx(ctx context.Context, client postgres.Writer, g entities.Gender) error {
+	return r.create(ctx, client, g)
+}
+
 func (r *genderRepo) create(ctx context.Context, client postgres.Writer, g entities.Gender) error {
 	fieldsNames := []string{"name", "origin"}
 	args := []any{g.Name, g.Origin}
@@ -46,7 +50,7 @@ func (r *genderRepo) create(ctx context.Context, client postgres.Writer, g entit
 		RETURNING id
 		`,
 		repos.SchemaName,
-		repos.GenderAcceptancesTableName,
+		repos.GendersTableName,
 		strings.Join(fieldsNames, ", "),
 		strings.Join(values, ", "),
 	)
