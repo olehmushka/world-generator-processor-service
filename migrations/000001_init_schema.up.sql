@@ -60,7 +60,7 @@ CREATE TABLE public.lang_languages
   min              INTEGER NOT NULL,
   max              INTEGER NOT NULL,
   dupl             VARCHAR(255) NOT NULL,
-  m                VARCHAR(255) NOT NULL,
+  m                DECIMAL NOT NULL,
   origin           VARCHAR(255) NOT NULL,
   creator_user_id  UUID REFERENCES users(id),
   created_at       TIMESTAMP(0) WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -68,6 +68,5 @@ CREATE TABLE public.lang_languages
 );
 
 CREATE UNIQUE INDEX lang_languages_slug_uindex ON lang_languages (slug);
-CREATE UNIQUE INDEX lang_languages_wordbase_slug_uindex ON lang_languages (wordbase_slug);
 
 COMMIT;

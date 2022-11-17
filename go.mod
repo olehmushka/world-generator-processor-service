@@ -13,7 +13,7 @@ require (
 	github.com/olehmushka/golang-toolkit v0.2.4
 	github.com/olehmushka/postgres-golang v0.1.2
 	github.com/olehmushka/word-generator v0.1.2
-	github.com/olehmushka/world-generator-engine v0.2.17
+	github.com/olehmushka/world-generator-engine v0.2.19
 	github.com/sirupsen/logrus v1.9.0
 	github.com/swaggo/http-swagger v1.3.3
 	github.com/swaggo/swag v1.8.7

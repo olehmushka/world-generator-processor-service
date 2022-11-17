@@ -1,5 +1,5 @@
 BEGIN;
 
-DROP TABLE IF EXISTS gender_acceptances;
+DROP TABLE IF EXISTS gender_acceptances CASCADE;
 
 COMMIT;

@@ -76,7 +76,7 @@ func (r *languageRepo) create(ctx context.Context, client postgres.Writer, lang 
 		RETURNING id
 		`,
 		repos.SchemaName,
-		repos.FamiliesTableName,
+		repos.LanguagesTableName,
 		strings.Join(fieldsNames, ", "),
 		strings.Join(values, ", "),
 	)
@@ -86,7 +86,6 @@ func (r *languageRepo) create(ctx context.Context, client postgres.Writer, lang 
 		args...,
 	)
 	if err != nil {
-		fmt.Printf("ErrorError: %+v\nLang: %+v\n\n", err, lang)
 		return wrapped_error.NewInternalServerError(err, "can not create language")
 	}
 	lang.ID = id

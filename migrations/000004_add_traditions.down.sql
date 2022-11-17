@@ -1,5 +1,5 @@
 BEGIN;
 
-DROP TABLE IF EXISTS traditions;
+DROP TABLE IF EXISTS traditions CASCADE;
 
 COMMIT;

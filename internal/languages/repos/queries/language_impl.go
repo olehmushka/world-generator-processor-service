@@ -192,6 +192,7 @@ func (r *languageRepo) queryLanguage(ctx context.Context, client postgres.Reader
 	if wrapped_error.Equals(err, postgres.ErrNoRows) {
 		return nil, nil
 	}
+	fmt.Printf("Err: %+v\n\n", err)
 
 	return nil, wrapped_error.NewBadRequestError(err, "can not scan language")
 }
