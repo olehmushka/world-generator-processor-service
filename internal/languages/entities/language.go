@@ -18,7 +18,7 @@ type Language struct {
 	Min            int       `json:"min"`
 	Max            int       `json:"max"`
 	Dupl           string    `json:"dupl"`
-	M              string    `json:"m"`
+	M              float64   `json:"m"`
 	Origin         Origin    `json:"origin"`
 	CreatorUserID  uuid.UUID `json:"creator_user_id"`
 	CreatedAt      time.Time `json:"created_at"`

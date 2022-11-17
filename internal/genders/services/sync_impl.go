@@ -41,12 +41,18 @@ func (s *sync) SyncGenders(ctx context.Context) error {
 		}
 		gottenGender, err := s.storageAdp.QueryGenderByNameTx(ctx, tx, g.Name)
 		if err != nil {
+			if err := tx.Rollback(ctx); err != nil {
+				return err
+			}
 			return err
 		}
 		if gottenGender != entities.ZeroGender {
 			continue
 		}
 		if err := s.storageAdp.CreateGenderTx(ctx, tx, g); err != nil {
+			if err := tx.Rollback(ctx); err != nil {
+				return err
+			}
 			return err
 		}
 

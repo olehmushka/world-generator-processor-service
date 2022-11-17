@@ -910,8 +910,12 @@ github.com/olehmushka/postgres-golang v0.1.2 h1:SJlHIhgAIBTfhPDC8Xelk+c60HbqZNpM
 github.com/olehmushka/postgres-golang v0.1.2/go.mod h1:mf7YJEe0GuhHefhi5lxdiwrC4BuQmGvifVuPt3D4aL8=
 github.com/olehmushka/word-generator v0.1.2 h1:PJx94fpmNEAiYkQRfeAWFnx8YDJsflwSehARmyRZ3RE=
 github.com/olehmushka/word-generator v0.1.2/go.mod h1:NsZfdkrRLDlIo+ordD+RrrYhQtx/DuKEwbmPbJ4+9AQ=
-github.com/olehmushka/world-generator-engine v0.2.13 h1:kryP9uYKCeXiS3V5f3u099KUwp1tQPLsmYwiH5LTOZg=
-github.com/olehmushka/world-generator-engine v0.2.13/go.mod h1:O4+MKYT2vo+dQuKeFi5q+aFRSUZBhfa19YWOAuZlnhc=
+github.com/olehmushka/world-generator-engine v0.2.15 h1:rBX+2UukWcNLOEVtyVDo5MIEjPOlt2ZS1U9hibjdIqs=
+github.com/olehmushka/world-generator-engine v0.2.15/go.mod h1:O4+MKYT2vo+dQuKeFi5q+aFRSUZBhfa19YWOAuZlnhc=
+github.com/olehmushka/world-generator-engine v0.2.16 h1:8NHJYB2ejsyb5qhN3q1ocWSyOMLD/ND14atw9e0gfmg=
+github.com/olehmushka/world-generator-engine v0.2.16/go.mod h1:O4+MKYT2vo+dQuKeFi5q+aFRSUZBhfa19YWOAuZlnhc=
+github.com/olehmushka/world-generator-engine v0.2.17 h1:klEgVmF4CR9hJPNuyHMvt+dW+jrYZDiQZygcBVMQr9k=
+github.com/olehmushka/world-generator-engine v0.2.17/go.mod h1:O4+MKYT2vo+dQuKeFi5q+aFRSUZBhfa19YWOAuZlnhc=
 github.com/olekukonko/tablewriter v0.0.0-20170122224234-a0225b3f23b5/go.mod h1:vsDQFd/mU46D+Z4whnwzcISnGGzXWMclvtLoiIKAKIo=
 github.com/onsi/ginkgo v0.0.0-20151202141238-7f8ab55aaf3b/go.mod h1:lLunBs/Ym6LB5Z9jYTR76FiuTmxDTDusOGeTQH+WWjE=
 github.com/onsi/ginkgo v0.0.0-20170829012221-11459a886d9c/go.mod h1:lLunBs/Ym6LB5Z9jYTR76FiuTmxDTDusOGeTQH+WWjE=

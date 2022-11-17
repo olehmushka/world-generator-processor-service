@@ -12,6 +12,12 @@ import (
 	gendersReposQueries "world_generator_processor_service/internal/genders/repos/queries"
 	gendersReposTx "world_generator_processor_service/internal/genders/repos/tx"
 	gendersServices "world_generator_processor_service/internal/genders/services"
+	languagesEngineAdp "world_generator_processor_service/internal/languages/adapters/engine"
+	languagesStorageAdp "world_generator_processor_service/internal/languages/adapters/storage"
+	languagesReposComm "world_generator_processor_service/internal/languages/repos/commands"
+	languagesReposQueries "world_generator_processor_service/internal/languages/repos/queries"
+	languagesReposTx "world_generator_processor_service/internal/languages/repos/tx"
+	languagesServices "world_generator_processor_service/internal/languages/services"
 
 	"go.uber.org/fx"
 )
@@ -36,4 +42,14 @@ var Modules = fx.Options(
 	gendersServices.GenderAcceptanceSrvModule,
 	gendersServices.GenderSrvModule,
 	gendersServices.SyncSrvModule,
+	languagesReposComm.FamilyModule,
+	languagesReposComm.SubfamilyModule,
+	languagesReposComm.LanguageModule,
+	languagesReposQueries.FamilyModule,
+	languagesReposQueries.SubfamilyModule,
+	languagesReposQueries.LanguageModule,
+	languagesReposTx.Module,
+	languagesEngineAdp.Module,
+	languagesStorageAdp.Module,
+	languagesServices.SyncSrvModule,
 )

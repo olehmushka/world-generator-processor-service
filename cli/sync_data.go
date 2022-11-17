@@ -5,6 +5,7 @@ import (
 	"os"
 	"world_generator_processor_service/core/zerodowntime"
 	gendersServices "world_generator_processor_service/internal/genders/services"
+	languagesServices "world_generator_processor_service/internal/languages/services"
 
 	"github.com/sirupsen/logrus"
 	"go.uber.org/fx"
@@ -21,6 +22,7 @@ func runSyncDataCommand() error {
 			fx.Options(
 				fx.Invoke(func(
 					genderSyncSrv gendersServices.Sync,
+					langSyncSrv languagesServices.Sync,
 				) {
 					log := logrus.New().WithFields(logrus.Fields{
 						"command": SyncDataCommand,
@@ -34,6 +36,25 @@ func runSyncDataCommand() error {
 						return
 					}
 					if err := genderSyncSrv.SyncGenderAcceptances(ctx); err != nil {
+						log.Errorln(err)
+						log.Info(ctx, "command finish")
+						os.Exit(0)
+						return
+					}
+
+					if err := langSyncSrv.SyncFamilies(ctx); err != nil {
+						log.Errorln(err)
+						log.Info(ctx, "command finish")
+						os.Exit(0)
+						return
+					}
+					if err := langSyncSrv.SyncSubfamilies(ctx); err != nil {
+						log.Errorln(err)
+						log.Info(ctx, "command finish")
+						os.Exit(0)
+						return
+					}
+					if err := langSyncSrv.SyncLanguages(ctx); err != nil {
 						log.Errorln(err)
 						log.Info(ctx, "command finish")
 						os.Exit(0)

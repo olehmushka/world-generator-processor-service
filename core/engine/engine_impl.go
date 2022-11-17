@@ -1,6 +1,8 @@
 package engine
 
 import (
+	"strings"
+
 	"github.com/olehmushka/golang-toolkit/either"
 	wordgenerator "github.com/olehmushka/word-generator"
 	culture "github.com/olehmushka/world-generator-engine/culture"
@@ -26,15 +28,30 @@ var Module = fx.Options(
 )
 
 func (e *engine) LoadLanguageFamilies() chan either.Either[[]string] {
-	return e.driver.LoadLanguageFamilies()
+	return e.driver.LoadLanguageFamilies(func(s string) string {
+		for _, engineWord := range []string{"/engine", "/engine/", "engine/"} {
+			s = strings.ReplaceAll(s, engineWord, "/")
+		}
+		return s
+	})
 }
 
 func (e *engine) LoadLanguageSubfamilies() chan either.Either[[]*language.Subfamily] {
-	return e.driver.LoadLanguageSubfamilies()
+	return e.driver.LoadLanguageSubfamilies(func(s string) string {
+		for _, engineWord := range []string{"/engine", "/engine/", "engine/"} {
+			s = strings.Replace(s, engineWord, "/", -1)
+		}
+		return s
+	})
 }
 
 func (e *engine) LoadLanguages() chan either.Either[*language.Language] {
-	return e.driver.LoadLanguages()
+	return e.driver.LoadLanguages(func(s string) string {
+		for _, engineWord := range []string{"/engine", "/engine/", "engine/"} {
+			s = strings.ReplaceAll(s, engineWord, "/")
+		}
+		return s
+	})
 }
 
 func (e *engine) GenerateWord(lang *language.Language) (string, error) {
@@ -54,27 +71,57 @@ func (e *engine) LoadInfluences() []influence.Influence {
 }
 
 func (e *engine) LoadCulturesBases() chan either.Either[[]string] {
-	return e.driver.LoadCulturesBases()
+	return e.driver.LoadCulturesBases(func(s string) string {
+		for _, engineWord := range []string{"/engine", "/engine/", "engine/"} {
+			s = strings.ReplaceAll(s, engineWord, "/")
+		}
+		return s
+	})
 }
 
 func (e *engine) LoadCultureSubbases() chan either.Either[[]*culture.Subbase] {
-	return e.driver.LoadCultureSubbases()
+	return e.driver.LoadCultureSubbases(func(s string) string {
+		for _, engineWord := range []string{"/engine", "/engine/", "engine/"} {
+			s = strings.ReplaceAll(s, engineWord, "/")
+		}
+		return s
+	})
 }
 
 func (e *engine) LoadAllEthoses() chan either.Either[[]culture.Ethos] {
-	return e.driver.LoadAllEthoses()
+	return e.driver.LoadAllEthoses(func(s string) string {
+		for _, engineWord := range []string{"/engine", "/engine/", "engine/"} {
+			s = strings.ReplaceAll(s, engineWord, "/")
+		}
+		return s
+	})
 }
 
 func (e *engine) LoadAllTraditions() chan either.Either[[]*culture.Tradition] {
-	return e.driver.LoadAllTraditions()
+	return e.driver.LoadAllTraditions(func(s string) string {
+		for _, engineWord := range []string{"/engine", "/engine/", "engine/"} {
+			s = strings.ReplaceAll(s, engineWord, "/")
+		}
+		return s
+	})
 }
 
 func (e *engine) LoadAllParentRawCultures() chan either.Either[[]*culture.RawCulture] {
-	return e.driver.LoadAllParentRawCultures()
+	return e.driver.LoadAllParentRawCultures(func(s string) string {
+		for _, engineWord := range []string{"/engine", "/engine/", "engine/"} {
+			s = strings.ReplaceAll(s, engineWord, "/")
+		}
+		return s
+	})
 }
 
 func (e *engine) LoadAllParentCultures() chan either.Either[*culture.Culture] {
-	return e.driver.LoadAllParentCultures()
+	return e.driver.LoadAllParentCultures(func(s string) string {
+		for _, engineWord := range []string{"/engine", "/engine/", "engine/"} {
+			s = strings.ReplaceAll(s, engineWord, "/")
+		}
+		return s
+	})
 }
 
 func (e *engine) Generate(opts *culture.CreateCultureOpts, parents ...*culture.Culture) (*culture.Culture, error) {
