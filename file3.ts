@@ -1,0 +1,1 @@
+improved content of file3.ts
