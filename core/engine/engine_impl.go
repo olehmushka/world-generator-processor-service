@@ -15,8 +15,7 @@ import (
 )
 
 type engine struct {
-	driver        eng.Engine
-	wordGenerator wordgenerator.Generator
+	driver eng.Engine
 }
 
 func New() Engine {

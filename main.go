@@ -1,18 +1,12 @@
 package main
 
 import (
-	"math/rand"
 	"os"
-	"time"
 
 	"world_generator_processor_service/cli"
 
 	"github.com/sirupsen/logrus"
 )
-
-func init() {
-	rand.Seed(time.Now().UTC().UnixNano())
-}
 
 // @title WorldGenerator Processor API
 // @version 1.0

@@ -48,7 +48,7 @@ func (a *adapter) LoadNativeGenderAcceptances(context.Context) ([]entities.Gende
 }
 
 func (a *adapter) LoadInfluences(context.Context) ([]entities.Influence, error) {
-	out := make([]entities.Influence, 3)
+	out := make([]entities.Influence, 0, 3)
 	for _, i := range a.engine.LoadInfluences() {
 		switch i {
 		case influence.StrongInfluence:
