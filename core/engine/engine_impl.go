@@ -38,7 +38,7 @@ func (e *engine) LoadLanguageFamilies() chan either.Either[[]string] {
 func (e *engine) LoadLanguageSubfamilies() chan either.Either[[]*language.Subfamily] {
 	return e.driver.LoadLanguageSubfamilies(func(s string) string {
 		for _, engineWord := range []string{"/engine", "/engine/", "engine/"} {
-			s = strings.Replace(s, engineWord, "/", -1)
+			s = strings.ReplaceAll(s, engineWord, "/")
 		}
 		return s
 	})

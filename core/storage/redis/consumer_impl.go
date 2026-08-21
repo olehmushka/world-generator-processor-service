@@ -107,7 +107,7 @@ func (c *consumer) worker(ctx context.Context, n int, wg *sync.WaitGroup) {
 		}
 
 		var message Message
-		if err := json.Unmarshal([]byte(msg.Payload), &message); err != nil {
+		if err := json.Unmarshal([]byte(msg.Payload), &message); err != nil { //nolint:musttag // adding json tags would change the pub/sub wire format during rolling deploys
 			errCount++
 			log.Error("unmarshal msg error", err)
 			if errCount > 10 {

@@ -1,6 +1,7 @@
 package http
 
 import (
+	"context"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
@@ -13,7 +14,7 @@ import (
 func TestGetHealthCheck(t *testing.T) {
 	h := &handlers{}
 
-	req := httptest.NewRequest(http.MethodGet, "/health-check", nil)
+	req := httptest.NewRequestWithContext(context.Background(), http.MethodGet, "/health-check", nil)
 	rec := httptest.NewRecorder()
 
 	h.GetHealthCheck(rec, req)
@@ -29,7 +30,7 @@ func TestGetHealthCheck(t *testing.T) {
 func TestGetInfo(t *testing.T) {
 	h := &handlers{}
 
-	req := httptest.NewRequest(http.MethodGet, "/info", nil)
+	req := httptest.NewRequestWithContext(context.Background(), http.MethodGet, "/info", nil)
 	rec := httptest.NewRecorder()
 
 	h.GetInfo(rec, req)

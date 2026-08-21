@@ -1,35 +1,63 @@
+version: "2"
 run:
-  # default concurrency is an available CPU number
   concurrency: 4
-
-  timeout: 60m
-
   issues-exit-code: 1
-
   tests: true
-
   allow-parallel-runners: true
-
-linters-settings:
-  errcheck:
-    check-type-assertions: false
-    check-blank: false
-
-  lll:
-    line-length: 100
-    tab-width: 2
-
 linters:
   enable:
-    - megacheck
-    - govet
+    - asasalint
+    - asciicheck
+    - bidichk
+    - bodyclose
+    - contextcheck
+    - durationcheck
+    - errchkjson
+    - errorlint
+    - exhaustive
+    - gocheckcompilerdirectives
+    - gochecksumtype
+    - gosec
+    - gosmopolitan
+    - loggercheck
+    - makezero
+    - musttag
+    - nilerr
+    - nilnesserr
+    - noctx
+    - protogetter
+    - reassign
+    - recvcheck
+    - rowserrcheck
+    - spancheck
+    - sqlclosecheck
+    - testifylint
+    - zerologlint
   disable:
-    - maligned
     - prealloc
-    - scopelint
     - unparam
-  disable-all: false
-  presets:
-    - bugs
-    - unused
-  fast: false
+  settings:
+    errcheck:
+      check-type-assertions: false
+      check-blank: false
+    lll:
+      line-length: 100
+      tab-width: 2
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$

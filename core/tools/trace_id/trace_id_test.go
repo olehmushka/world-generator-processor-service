@@ -54,7 +54,7 @@ func TestSetTraceIDMiddleware(t *testing.T) {
 				gotTraceID = GetTraceID(r.Context())
 			})
 
-			req := httptest.NewRequest(http.MethodGet, "/", nil)
+			req := httptest.NewRequestWithContext(context.Background(), http.MethodGet, "/", nil)
 			if tc.headerValue != "" {
 				req.Header.Set(TraceIDHeader, tc.headerValue)
 			}

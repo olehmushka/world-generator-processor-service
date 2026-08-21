@@ -46,7 +46,7 @@ func (p *publisher) Publish(ctx context.Context, ch string, v []byte) error {
 		Timestamp: timeTools.TimeToString(time.Now()),
 		TraceID:   traceIDTools.GetTraceID(ctx),
 	}
-	b, err := json.Marshal(msg)
+	b, err := json.Marshal(msg) //nolint:musttag // adding json tags would change the pub/sub wire format during rolling deploys
 	if err != nil {
 		return wrapped_error.NewInternalServerError(err, "can not marshal redis message")
 	}
