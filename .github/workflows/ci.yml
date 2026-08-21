@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-test:
+    name: Build & test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Build
+        run: go build -v ./...
+
+      - name: Vet
+        run: go vet ./...
+
+      # Only unit tests over pure logic / HTTP handlers exist today - none of the
+      # current test files require a live Postgres/MongoDB/Redis connection, so
+      # the full suite is safe to run in CI as-is. If integration tests that need
+      # real infra are added later, guard them with `testing.Short()`/build tags
+      # and run `go test -short ./...` here instead.
+      - name: Test
+        run: go test -race -v ./...
