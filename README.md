@@ -1,5 +1,12 @@
 # world-generator-processor-service
 
+[![CI](https://github.com/olehmushka/world-generator-processor-service/actions/workflows/ci.yml/badge.svg)](https://github.com/olehmushka/world-generator-processor-service/actions/workflows/ci.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/olehmushka/world-generator-processor-service)](https://goreportcard.com/report/github.com/olehmushka/world-generator-processor-service)
+[![Go Reference](https://pkg.go.dev/badge/github.com/olehmushka/world-generator-processor-service.svg)](https://pkg.go.dev/github.com/olehmushka/world-generator-processor-service)
+[![codecov](https://codecov.io/gh/olehmushka/world-generator-processor-service/branch/main/graph/badge.svg)](https://codecov.io/gh/olehmushka/world-generator-processor-service)
+![Go Version](https://img.shields.io/github/go-mod/go-version/olehmushka/world-generator-processor-service)
+[![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+
 An HTTP backend service that wraps [world-generator-engine](https://github.com/olehmushka/world-generator-engine) —
 a procedural worldbuilding generator that produces languages, genders, gender acceptances,
 cultures and traditions for fictional worlds — and persists the generated data so it can be
